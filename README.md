@@ -59,7 +59,9 @@ Run tests:
 python -m pytest
 ```
 
-## Example Output
+## Quick Demo Output
+
+`examples/run_simulation.py` shows resource collection, active-agent counts, hazard collisions, and adaptation events:
 
 ```text
 episode=01 resources=08 active=1 energy=6.0 hazards=0 event=reduce_challenge
@@ -72,10 +74,19 @@ Policy comparison prints a compact table:
 ```text
 policy          resources  hazards  avg_energy
 ------------------------------------------------
-random                  3        2         0.0
+random                  8        0         0.0
 greedy                 55       13         8.2
 hazard_avoider          1        0         0.0
 energy_saver            6        0         0.0
+```
+
+`examples/inspect_adaptation_events.py` prints the adaptation event stream:
+
+```text
+episode  action                   reason
+----------------------------------------------------------------------
+      1  reduce_challenge        active_agents=1, hazard_collisions=0
+      5  increase_challenge      resources_collected=16, hazard_collisions=0
 ```
 
 ## Metrics
@@ -99,6 +110,10 @@ flowchart LR
     Metrics --> Logger["SimulationLogger"]
     Metrics --> Plot["simulation_metrics.png"]
 ```
+
+## Repository Status
+
+This repository is a lightweight, research-oriented prototype. It is meant to demonstrate modular simulation infrastructure, adaptive runtime logic, and metric/logging workflows that could be extended into Gymnasium, PettingZoo, or custom RL experiments.
 
 ## Future Improvements
 
