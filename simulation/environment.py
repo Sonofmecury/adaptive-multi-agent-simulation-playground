@@ -15,7 +15,12 @@ class MultiAgentEnvironment:
         self,
         *,
         grid_size: int = 10,
-        agent_policy_types: tuple[str, ...] = ("random", "greedy", "hazard_avoider", "energy_saver"),
+        agent_policy_types: tuple[str, ...] = (
+            "random",
+            "greedy",
+            "hazard_avoider",
+            "energy_saver",
+        ),
         seed: int | None = None,
     ) -> None:
         self.grid_size = grid_size
@@ -100,7 +105,9 @@ class MultiAgentEnvironment:
 
     def add_hazard(self) -> None:
         self.hazard_count = min(18, self.hazard_count + 1)
-        occupied = self.resources | self.hazards | {agent.position for agent in self.agents}
+        occupied = (
+            self.resources | self.hazards | {agent.position for agent in self.agents}
+        )
         self.hazards |= self._sample_positions(1, occupied)
 
     def remove_hazard(self) -> None:
@@ -127,7 +134,12 @@ class MultiAgentEnvironment:
         return resources_collected, hazard_collisions
 
     def _respawn_resources(self) -> None:
-        occupied = self.resources | self.hazards | self.safe_zones | {agent.position for agent in self.agents}
+        occupied = (
+            self.resources
+            | self.hazards
+            | self.safe_zones
+            | {agent.position for agent in self.agents}
+        )
         missing = self.resource_count - len(self.resources)
         if missing > 0:
             self.resources |= self._sample_positions(missing, occupied)

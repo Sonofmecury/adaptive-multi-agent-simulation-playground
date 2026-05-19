@@ -45,11 +45,16 @@ class AdaptiveController:
             action = "increase_challenge"
             reason = f"resources_collected={resources_collected}, hazard_collisions={hazard_collisions}"
             self._stable_counter = 0
-        elif active_agents <= max(1, len(environment.agents) // 2) or hazard_collisions >= 5:
+        elif (
+            active_agents <= max(1, len(environment.agents) // 2)
+            or hazard_collisions >= 5
+        ):
             environment.increase_resources()
             environment.remove_hazard()
             action = "reduce_challenge"
-            reason = f"active_agents={active_agents}, hazard_collisions={hazard_collisions}"
+            reason = (
+                f"active_agents={active_agents}, hazard_collisions={hazard_collisions}"
+            )
             self._stable_counter = 0
         else:
             self._stable_counter += 1

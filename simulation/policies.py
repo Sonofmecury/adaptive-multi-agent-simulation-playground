@@ -6,7 +6,6 @@ import random
 
 from simulation.agent import Agent, Position
 
-
 ACTIONS: tuple[Position, ...] = ((-1, 0), (1, 0), (0, -1), (0, 1), (0, 0))
 
 
@@ -21,11 +20,17 @@ def choose_action(
     """Choose an action from a small set of interpretable policy types."""
 
     if agent.policy_type == "greedy":
-        return _toward_nearest(agent.position, resources) if resources else rng.choice(ACTIONS)
+        return (
+            _toward_nearest(agent.position, resources)
+            if resources
+            else rng.choice(ACTIONS)
+        )
     if agent.policy_type == "hazard_avoider":
         return _avoid_hazards(agent.position, hazards, grid_size, rng)
     if agent.policy_type == "energy_saver":
-        return (0, 0) if agent.energy < 6 and rng.random() < 0.5 else rng.choice(ACTIONS)
+        return (
+            (0, 0) if agent.energy < 6 and rng.random() < 0.5 else rng.choice(ACTIONS)
+        )
     return rng.choice(ACTIONS)
 
 
@@ -50,7 +55,9 @@ def _avoid_hazards(
     best_score = -1
     for action in candidates:
         candidate = _clip((position[0] + action[0], position[1] + action[1]), grid_size)
-        nearest_hazard = min((_distance(candidate, hazard) for hazard in hazards), default=grid_size)
+        nearest_hazard = min(
+            (_distance(candidate, hazard) for hazard in hazards), default=grid_size
+        )
         if candidate not in hazards and nearest_hazard > best_score:
             best_score = nearest_hazard
             best_action = action

@@ -40,7 +40,9 @@ class MetricsTracker:
         if event is not None:
             self.adaptation_events.append(event)
 
-        score = step_resources * 2.0 + environment.active_agent_count - step_hazards * 1.5
+        score = (
+            step_resources * 2.0 + environment.active_agent_count - step_hazards * 1.5
+        )
         metrics = EpisodeMetrics(
             episode=episode,
             total_resources_collected=environment.total_resources_collected,

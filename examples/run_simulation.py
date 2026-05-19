@@ -12,13 +12,14 @@ import matplotlib.pyplot as plt
 from simulation import AdaptiveController, MetricsTracker, MultiAgentEnvironment
 from simulation.logger import SimulationLogger
 
-
 OUTPUT_DIR = Path(__file__).resolve().parents[1] / "outputs"
 PLOT_PATH = OUTPUT_DIR / "simulation_metrics.png"
 LOG_PATH = OUTPUT_DIR / "simulation_log.jsonl"
 
 
-def run_simulation(episodes: int = 30, steps_per_episode: int = 20, verbose: bool = True) -> MetricsTracker:
+def run_simulation(
+    episodes: int = 30, steps_per_episode: int = 20, verbose: bool = True
+) -> MetricsTracker:
     environment = MultiAgentEnvironment(seed=12)
     controller = AdaptiveController()
     tracker = MetricsTracker()

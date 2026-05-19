@@ -7,7 +7,9 @@ from simulation.environment import MultiAgentEnvironment
 
 def render_environment(environment: MultiAgentEnvironment) -> str:
     rows: list[str] = []
-    agent_positions = {agent.position: str(agent.agent_id) for agent in environment.agents}
+    agent_positions = {
+        agent.position: str(agent.agent_id) for agent in environment.agents
+    }
 
     for row in range(environment.grid_size):
         cells: list[str] = []
