@@ -1,6 +1,6 @@
 # Adaptive Multi-Agent Simulation Playground
 
-A lightweight multi-agent simulation where simple agents collect resources, avoid hazards, and interact with an environment that adapts based on group performance. The project is designed as a compact research-oriented prototype for agent-based simulation and adaptive runtime logic.
+A multi-agent Python simulation where a shared grid environment adapts to collective agent performance, with modular policies, JSONL logging, and metrics visualization.
 
 ## What Agent-Based Simulation Means Here
 
@@ -58,6 +58,9 @@ Run tests:
 ```bash
 python -m pytest
 ```
+
+Output files are generated locally and are not tracked in git.
+After running, check the `outputs/` directory for plots and logs.
 
 ## Quick Demo Output
 

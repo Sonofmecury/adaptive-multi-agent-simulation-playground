@@ -1,4 +1,0 @@
-{"type": "episode", "episode": 1, "total_resources_collected": 1, "average_agent_energy": 16.75, "active_agents": 4, "hazard_collisions": 0, "adaptation_events": 0, "episode_score": 6.0}
-{"type": "episode", "episode": 2, "total_resources_collected": 2, "average_agent_energy": 17.5, "active_agents": 4, "hazard_collisions": 0, "adaptation_events": 0, "episode_score": 8.0}
-{"type": "episode", "episode": 3, "total_resources_collected": 2, "average_agent_energy": 15.0, "active_agents": 4, "hazard_collisions": 2, "adaptation_events": 1, "episode_score": 5.0}
-{"type": "adaptation", "episode": 3, "action": "introduce_new_challenge", "reason": "stable group performance", "resource_count": 12, "hazard_count": 6, "safe_zone_count": 2}
